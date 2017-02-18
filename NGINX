@@ -1,0 +1,30 @@
+Alterações com nginx 1.11.10 14 Feb 2017
+
+    *) Alteração: o formato do cabeçalho do cache foi alterado, previamente armazenado em cache
+       As respostas serão invalidadas.
+
+    *) Recurso: suporte de "stale-while-revalidate" e "stale-if-error"
+       Extensões na linha de cabeçalho de resposta do back-end "Cache-Control".
+
+    *) Recurso: o "proxy_cache_background_update",
+       "Fastcgi_cache_background_update", "scgi_cache_background_update",
+       E "uwsgi_cache_background_update" diretivas.
+
+    *) Recurso: nginx agora é capaz de cache respostas com o "Vary" cabeçalho
+       Até 128 caracteres (em vez de 42 caracteres em caracteres
+       Versões).
+
+    *) Recurso: o parâmetro "build" da diretiva "server_tokens".
+       Graças a Tom Thorogood.
+
+    *) Bugfix: "[crit] SSL_write () falhou" mensagens podem aparecer em logs
+       Ao tratar solicitações com o cabeçalho de solicitação "Expect: 100-continue"
+       linha.
+
+    *) Bugfix: o ngx_http_slice_module não funcionou em locais nomeados.
+
+    *) Bugfix: uma falha de segmentação pode ocorrer em um processo de
+       Usando AIO após um redirecionamento "X-Accel-Redirect".
+
+    *) Bugfix: consumo reduzido de memória para pedidos de longa duração usando
+       Gzipping
