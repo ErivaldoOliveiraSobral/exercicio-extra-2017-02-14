@@ -1,0 +1,39 @@
+Wordpress versão 3.6
+
+Formatos de posts:
+  Os formatos de posts foram introduzidos no wordpress e des então podem ser ultuilizados de uma forma bastante simples e prática.
+  Embora estes formatos de posts tenham sido implementados na versão 3.5, eles foram desenhados de forma mas eficiente na nova versão
+  3.6. O editor de posts sofreu uma mudança radical para dar uma maior ênfase a esta opção. Os formatos de posts passam a estar no topo 
+  do editor de artigos, sendo possível criar diferentes tipos de posts de uma forma exremamente simples.
+  Agora, dependendo do tipo de formato de post que você selecioanar, serão apresentadas opções diferentes para trabalhar esse mesmo post.
+  Se você selecionar por exemplo o formato de posts Imagens, irá aparecer de imediato o uploader de mídia do wordpress para que você possa 
+  colocar imagens no post. 
+  Da mesma forma, que se escolher o formato de posts Link irá aparecer os respectivos campos para adicionar links as post.
+  
+Auto Save melhorado:
+  A nova versão 3.6 inclui também melhoramentos notáveis na opção Auto Save de artigos. O que acontecia frequentemente aos bloqueiros que usam o
+  sistema é que ao expirar o cookie de sessão, o wordpress ixigia que fosse realizado novamente o login, e o conteúdo escrito até aquela altura era
+  automaticamente perdido. Para resolver esse problema, a versão 3.6 passa a gravar o conteúdo dos posts automaticamnte de 15 em 15 segundos
+  e agora quando a sessão expira, ele mostra a caixa de login flutuante diretamente no editor de posts, evitando que se perca a informação
+  escrita até então.
+  
+Bloquear Posts:
+  Wordpress 3.6 inclui uma nova opção de Post Locking que basicamnte serve para trancar um post e impedir que outros autores editem
+  ou modifiquem um determinado artigo que você estava fazendo.
+
+Novo Template Twentythirteen:
+  Este novo template faz usi de um layout responsivo, adptável às diferentes resoluções de tela. O tema em si utiliza também outras
+  fontes e um estilo mais moderno, que o torna numa verdadeira opção a ter em consideração na hora de criar um blog, especialmete para
+  usuários menos vançados.
+  
+Gestor de revisões:
+  O gestor de revisões de posts também foi ligeiramente alterado. A partir de agora será possivél ver um gravator de autor que realizou
+  as várias edições do artigo, e recuperar revisões mais antigas, torna-se bastante mais simples nesta nova versão.
+  
+Menus:
+  A opção de criação de menus também foi ligeiramente alterada, oferecendo agora dois separadores individualmente, sendo que um serve 
+  para editar os Menus correspondentes, e o outro as localizações desses mesmos menus no layout do site.
+  
+Basicamente são estas as grandes novidades no Wordpress 3.6, que tornam  o sistema ainda mais simples que usar e com uma interface cada vez mais
+simplório e inde a realização das ações se torna extremamente rápida e eficaz. Estas novidades vêm ajudar e muito os criadores de conteúdo
+e simplificar todos so processos de criação e edição de conteúdo em particular! 
