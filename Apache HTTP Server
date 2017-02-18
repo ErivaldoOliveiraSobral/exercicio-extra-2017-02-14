@@ -1,0 +1,214 @@
+Algumas das pricipais melhorias entre as versões 2.2 e 2.4 do Apache HTTP Server.
+
+Melhorias fundamentais:
+
+MPM cargas Runtome;
+Evento MPM;
+Suporte Assíncrono;
+Log de configuração por módulo e diretório;
+Seções de configuração e petição;
+Expresão Purpose Analyzer Geral;
+KepAliveTimeout em milisegundos;
+Diretiva NameVirtuaalHost;
+Cancelar Configurações;
+Variaveis de arquivos de configuração;
+Uso de memória reduzido;
+
+Novos módulos:
+
+mod_proxy_fcgi
+  FastCGI Protocolo de infra-estrutura paramod_proxy
+
+mod_proxy_scgi
+  SCGI Backend Protocolo mod_proxy
+
+mod_proxy_express
+  Ele fornece uma configuração maciça e dinâmica de proxies reversos mod_proxy
+
+mod_remoteip
+  Substitui o endereço aparente cliente remoto IP eo nome do host para o pedido com a lista de endereços IP por um proxy ou um balanceador de carga através de cabeçalhos de solicitação.
+
+mod_heartmonitor, mod_lbmethod_heartbeat
+  Permite mod_proxy_balancertomar decisões com base balanceamento de carga com base no número de conexões ativas nos servidores back-end.
+
+mod_proxy_html
+  Anteriormente um módulo de terceiros, este suporta ligações de fixação HTML em uma situação de proxy reverso, onde o servidor gera URLs não são válidos para clientes no proxy.
+
+mod_sed
+  Uma reposição avançada mod_substitute, pode editar o corpo da resposta com plenos poderes de sede.
+
+mod_auth_form
+  Ativar autenticação baseada em formulários.
+
+mod_session
+  Ele permite o uso de estado da sessão para clientes, utilizando cookies ou armazenamento em um banco de dados.
+
+mod_allowmethods
+  Novo módulo para restringir certos métodos HTTP, sem interferir com a autenticação ou autorização.
+
+mod_lua
+  Incorpora a linguagem Lua no httpd, para as funções de configuração e lógica das pequenas empresas. (Experimental)
+
+mod_log_debug
+  Ele permite que você adicione mensagens de depuração personalizada em diferentes estágios de processamento do pedido.
+
+mod_buffer
+  Ele fornece buffer para os filtros de entrada e saída da bateria
+
+mod_data
+  Converte a resposta do organismo a um RFC2397 dados URL
+
+mod_ratelimit
+  Limitação de velocidade fornece largura de banda para os clientes
+
+mod_request
+  Ele fornece filtros para gerenciar e disponibilizar o corpo da solicitação HTTP
+
+mod_reflector
+  Reflexo fornece corpo do pedido como uma resposta por meio do filtro de saída da pilha.
+
+mod_slotmem_shm
+  Provider fornece uma memória partilhada com base na ranhura (ala placar).
+
+mod_xml2enc
+  Anteriormente um terceiro módulo, que suporta os módulos de filtro internacionalização (marcação-aware) com base na libxml2.
+
+mod_macro (Disponível a partir da versão 2.4.5)
+  Ele fornece macros para arquivos de configuração
+
+mod_proxy_wstunnel (Disponível a partir da versão 2.4.5)
+  Suporte túneis web soquetes.
+
+mod_authnz_fcgi (Disponível a partir da versão 2.4.10)
+  Ativar FastCGI aplicações autorizadas para autenticar e / ou autorizar clientes.
+
+mod_http2 (Disponível a partir da versão 2.4.17)
+  Suporte para camada de HTTP / 2
+
+
+Melhorias de módulos:
+
+mod_ssl
+  Você agora pode ser configurado para usar um servidor OCSP para verificar o status de um certificado de cliente validade. 
+  A resposta padrão é configurável, juntamente com a decisão sobre se a preferir a "resposta" designado no próprio certificado 
+  de cliente. Agora ele também é compatível com o "grampeamento OCSP" uma resposta OCSP ao "aperto de mão" inicial TLS com 
+  timestamp assinado pelo CA, em que o servidor recebe proativamente uma verificação de OCSP do seu certificado e transmite 
+  essa ou a cliente durante o "aperto de mão". Agora ele pode ser configurado para compartilhar os dados da sessão SSL entre 
+  servidores através memcached. 
+  As chaves de criptografia tipo CE (Elliptic Curve Inglês) são agora suportadas com RSA e DSA.
+  Suporte TLS-SRP (disponível na versão 2.4.4 e posterior).
+
+mod_proxy
+  A directiva ProxyPass está agora mais otimizada configurado dentro de um bloco Locationou LocationMatch, e oferece uma 
+  vantagem de desempenho significativa sobre tradicional dois - sintaxe de parâmetro quando presentes em grandes números.
+  O endereço de origem utilizado para pedidos de proxy agora é configurável.
+  Suporte para soquetes de domínio UNIX no backend (disponível na versão 2.4.7 e posterior).
+
+mod_proxy_balancer
+  Mais alterações de configuração em tempo de execução para BalancerMembers pelo gerente Balancer.
+  Você pode adicionar membros adicionais para BalancerMembers em tempo de execução pelo gerente Balancer.
+  Um subconjunto de parâmetros de configuração de tempo de execução Balancer. BalancerMembers pode ser definido  
+  como "escapar" de modo que somente responder aos problemas existentes sessões, o que lhes permite ser colocadas 
+  graciosamente off-line. Configuração do balanceador de carga pode ser persistente após uma reinicialização.
+
+mod_cache
+  No módulo mod_cache você pode adicionar cache de filtro em algum ponto da cadeia de filtro para proporcionar um melhor 
+  controle de cache. Agora você pode escolher o tipo de solicitações de cache head.
+  Directivas sendo possível agora mod_cache ser configurado pelo diretório em vez de por servidor.
+  O URL base de URLs em cache pode ser personalizado, de modo que um conjunto de caches podem compartilhar o mesmo 
+  parâmetro URL prefixo. Ele agora é capaz de servir em dados de cache sujo quando um motor não está disponível (5xx erro).
+  Agora você pode inserir HIT / Miss / revalidar em um tipo de cabeçalho X-Cache.
+
+mod_include
+  Atributo apoio onerror 'dentro do elemento' include ', que permite que um erro de mostar documento quando um erro ao invés 
+  da cadeia de erro padrão.
+
+mod_cgi, mod_include, mod_isapi, ...
+  As variáveis de ambiente de tradução de cabeçalho é mais rigorosa do que antes para mitigar alguns dos possíveis ataques de 
+  cross-site scripting, por meio de injeção de cabeçalho. Os cabeçalhos que contêm caracteres inválidos (incluindo sublinhados) 
+  são descartados silenciosamente. As variáveis de ambiente em Apache tem algumas dicas sobre como para trabalhar com clientes 
+  com sistemas legados quebrados que requerem este tipo de cabeçalhos. (Isso afeta todos os módulos que usam estas variáveis de 
+  ambiente.)
+
+mod_authz_core Autorização Logic Containers
+  Agora ele pode ser especificado autorização lógica avançada, usando a diretiva Requiree as diretrizes do recipiente associado, 
+  tais como <RequireAll>.
+
+mod_rewrite
+  Adiciona as bandeiras [QSD] (Cadeia de consulta Descartar) e [END]de políticas RewriteRulepara simplificar cenários comuns reescrever.
+  Adiciona a capacidade de usar complexos expressões buleanas RewriteCond.
+  Ele permite o uso de SQL como você amou funções RewriteMap.
+
+mod_ldap, mod_authnz_ldap
+  Adiciona suporte para grupos aninhados.
+  Características LDAPConnectionPoolTTL, LDAPTimeoute outras melhorias na gestão dos "tempos de espera" tempo de espera. 
+  Isto é especialmente útil para cenários onde não é um firewall no modo "Stateful" demolição conexões inativas para um 
+  servidor LDAP. Ele incorpora LDAPLibraryDebugpara gravar informações de depuração fornecido pelo kit de ferramentas usada por LDAP.
+
+mod_info
+  Agora você pode despejar o pré-processado na saída padrão durante a configuração de inicialização do servidor.
+
+mod_auth_basic
+  Novo mecanismo genérico para autenticação básica falsa (disponível na versão 2.4.5 e posterior).
+  
+Melhorias no programa:
+
+fcgistarter
+  New daemon FastCGI como utilitário de inicialização
+
+htcacheclean
+  Agora, as URLs atualmente em cache, podem ser listados, com os meta-dados adicionais incluídos.
+  Explícita e permite a exclusão seletiva de URLs em cache.
+  Os tamanhos dos arquivos podem agora ser arredondado para o tamanho do bloco particular, de modo que os limites de tamanho 
+  mais se assemelha o tamanho real no disco.
+  O tamanho do cache pode agora ser limitada pelo número de i-nodes, em vez de ou como um complemento, para limitar o tamanho do 
+  ficheiro no disco.
+
+rotatelogs
+  Agora você pode criar um link para o próprio arquivo de log.
+  Agora você pode invocar um costume eScript pós-rotação.
+
+htpasswd, htdbm
+  Suporta algoritmo bcrypt (disponível na versão 2.4.4 e posterior).
+  
+Documentação:
+
+mod_rewrite
+  A documentação mod_rewritede outras soluções foi reorganizado e escritos quase inteiramente, enfatizando exemplos e modos comuns 
+  de emprego e ensinar são mais apropriadas. O módulo de guia Rewrite agora é agora um top - seção de nível, com muito mais 
+  detalhes e melhor organização.
+
+mod_ssl
+  Documentação do módulo mod_sslfoi muito melhorada, com mais exemplos de o nível da instalação inicial, em adição à abordagem 
+  técnica acima.
+
+Guia de caches
+  O cache de guia foi reescrito para distinguir adequadamente entre o RFC2616 cache de HTTP / 1.1 e suas características fornecidas 
+  pelo mod_cache, e o caso geral de chave de cache / valor contribuído pela interface socache e abrangem temas específicos, tais 
+  como mecanismos de cache fornecida pelo módulo mod_file_cache.
+  
+Mudança no Desenvolvimento de módulos:
+
+Configuração Verificação gancho Adicionado
+  O novo Hook, check_configfoi adicionado, que circula entre os ganchos pre_confige open_logs. Também corre antes do gancho 
+  test_configquando a opção -té passado para httpd. O gancho check_config permite que os módulos para rever os valores nas 
+  definições de política e ajustar de forma independente enquanto as mensagens podem permanecer logados para o console. 
+  O usuário pode ser alertado para os problemas de configuração incorreta antes da função de gancho open_logs redireciona a 
+  saída de erro de log de erro do console.
+
+Adicionado uma Expressões Analyzer
+  Agora nós temos um propósito geral analisador de expressão, e sua API é exposta em ap_expr.h . Esta é uma adaptação do 
+  anteriormente implementada mod_ssl.
+
+Autorização Logic Containers
+  Módulos de autorização são agora registadas como um fornecedor por ap_register_auth_provider(), para apoiar a lógica de 
+  autorização avançada, como a directiva <RequireAll>. 
+  
+Interface de armazenamento em cache Pequenos Objetos
+  O cabeçalho ap_socache.h expõe um provedor de interface baseada de objetos de dados para pegar pequenos, com base no módulo 
+  cache de sessão pedido anterior mod_ssl. Provedores que utilizam uma memória compartilhada tampão cíclica, disco - arquivos 
+  de DBF com base, e cache de memória distribuída memcached são suportadas atualmente.
+
+Adicionado gancho Cache Estado
+  O módulo mod_cache contém agora um novo gancho cache_status, que é chamado, quando as decisões cache são conhecidos. 
+  A implementação padrão que contribui para o cabeçalho de resposta é fornecido opcionalmente X-Cachee X-Cache-Detail.
